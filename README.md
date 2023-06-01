@@ -1,0 +1,2 @@
+This is an ALX project to create a custom implementation of the printf function in C. The printf function is a widely used function for formatted output in the C programming language.The purpose of this project is to deepen our understanding of C programming and gain hands-on experience in developing a fundamental function commonly used in software development. By implementing our own version of printf, we aim to enhance our knowledge of string manipulation, formatting,and handling various data types.
+
