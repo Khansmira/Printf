@@ -6,7 +6,7 @@
  *
  * Return: The number of characters printed.
  */
-int pd(va_list arg)
+int p_d(va_list arg)
 {
 	int n = va_arg(arg, int);
 	int i = 0;
@@ -29,9 +29,9 @@ int pd(va_list arg)
  *
  * Return: number of characters
  */
-int pi(va_list arg)
+int p_i(va_list arg)
 {
-	return (pd(arg));
+	return (p_d(arg));
 }
 
 

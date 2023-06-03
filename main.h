@@ -13,8 +13,8 @@ int cha(va_list arg);
 int pe(va_list arg);
 int st(va_list arg);
 int print_n(int n);
-int pd(va_list arg);
-int pi(va_list arg);
+int p_d(va_list arg);
+int p_i(va_list arg);
 
 
 
