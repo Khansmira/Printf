@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * pd - calls function to print a signed integer.
+ * p_d - calls function to print a signed integer.
  * @arg: The va_list argument containing the integer to print.
  *
  * Return: The number of characters printed.
@@ -24,14 +24,24 @@ int p_d(va_list arg)
 
 
 /**
- * pi - same as pd
+ * p_i - calls function to print signed integer
  * @arg: argument
  *
  * Return: number of characters
  */
 int p_i(va_list arg)
 {
-	return (p_d(arg));
+	int n = va_arg(arg, int);
+	int i = 0;
+
+	if (n < 0)
+	{
+		_putchar('-');
+		i++;
+		n = -n;
+	}
+	i = print_n(n);
+	return (i);
 }
 
 
