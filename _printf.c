@@ -1,61 +1,49 @@
 #include "main.h"
 
 /**
- * _printf - custom function to replicate printf
- * @format: format to be printed.
- *
- * Return: number of characters printed
+ * _printf - custom printf function
+ * @format: string that contains the format to print
+ * Return: number of characters written
  */
-
-int _printf(const char *format, ...)
+int _printf(char *format, ...)
 {
-	va_list arg;
-	int i, j;
-	int nfc = 0;
-	print_data data[] = {
-		{"c", cha},
-		{"s", st},
-		{"%", pe},
-		{"d", p_id},
-		{"i", p_id},
-		{NULL, NULL}
-	};
-	va_start(arg, format);
+	int written = 0, (*print_fn)(char *, va_list);
+	char specifier[3];
+	va_list args;
 
-	for (i = 0; format[i]; i++)
+	if (format == NULL)
+		return (-1);
+	specifier[2] = '\0';
+	va_start(args, format);
+	_putchar(-1);
+	while (format[0])
 	{
-		if (format[i] == '%')
+		if (format[0] == '%')
 		{
-			i++;
-		}
-		if (format[i] == '\0')
-		{
-			return (-1);
-		}
-		if (format[i] == '%')
-		{
-			_putchar(format[i]);
-			nfc++;
-		}
-		else
-		{
-			for (j = 0; j < 5; j++)
+			print_fn = get_print_fn(format);
+			if (print_fn)
 			{
-				if (format[i] == *(data[j].specifier))
-					break;
+				specifier[0] = '%';
+				specifier[1] = format[1];
+				written += print_fn(specifier, args);
 			}
-			if (j < 5)
+			else if (format[1] != '\0')
 			{
-				nfc = nfc + data[j].print_function(arg);
-				i++;
+				written += _putchar('%');
+				written += _putchar(format[1]);
 			}
 			else
 			{
-				_putchar(format[i]);
-				nfc++;
+				written += _putchar('%');
+				break;
 			}
+			format += 2;
+		}
+		else
+		{
+			written += _putchar(format[0]);
+			format++;
 		}
 	}
-	va_end(arg);
-	return (nfc);
-}
+	_putchar(-2);
+	return (written);

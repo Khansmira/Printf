@@ -1,32 +1,47 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-
 #include <stdarg.h>
+#include <stddef.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-
-int _printf(const char *format, ...);
-int _putchar(char c);
-int cha(va_list arg);
-int pe(va_list arg);
-int st(va_list arg);
-int print_n(int n);
-int p_id(va_list arg);
-
-
-
 
 /**
- * Struct representing the conversion specifier and its corresponding print function
+ * struct print_method - structure containing specifier and their functions.
+ * @specifier: handles data using appropriate function
+ * @fn: prints the function for specific type.
  */
-typedef struct print_data
+typedef struct print_method
 {
-    char *specifier;
-    int (*print_function)(va_list);
-} print_data;
+	char *specifier;
+	int (*fn)(char *format, va_list);
+} print_fn;
 
 
+
+int (*get_print_fn(char *format))(char *format, va_list);
+int _printf(char *format, ...);
+
+int _abs(int number);
+int _putchar(char character);
+int _puts(char *string);
+int count_digits(int number);
+int print_char(char *format, va_list);
+int print_string(char *format, va_list);
+int print_percent(char *format, va_list);
+int _print_number(int number);
+int print_number(char *format, va_list);
+int print_binary(char *format, va_list);
+int print_octal(char *format, va_list);
+int print_hexlower(char *format, va_list);
+int print_hexUpper(char *format, va_list);
+int _print_unsign(unsigned int number);
+int print_unsign(char *format, va_list);
+int print_unprintable(char *format, va_list);
+int print_pointer(char *format, va_list);
+int print_reverse(char *format, va_list);
+int _print_rot13(char *string);
+int print_rot13(char *format, va_list);
 
 #endif /* MAIN_H */
+
+
