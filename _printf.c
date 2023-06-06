@@ -16,8 +16,9 @@ int _printf(const char *format, ...)
 		{"c", cha},
 		{"s", st},
 		{"%", pe},
-		{"d", p_d},
-		{"i", p_i},
+		{"d", p_id},
+		{"i", p_id},
+		{"b", p_bn},
 		{NULL, NULL}
 	};
 	va_start(arg, format);
@@ -39,12 +40,12 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			for (j = 0; j < 5; j++)
+			for (j = 0; j <= 6; j++)
 			{
 				if (format[i] == *(data[j].specifier))
 					break;
 			}
-			if (j < 5)
+			if (j <= 6)
 			{
 				nfc = nfc + data[j].print_function(arg);
 				i++;
