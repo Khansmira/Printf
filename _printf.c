@@ -40,12 +40,12 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			for (j = 0; j <= 6; j++)
+			for (j = 0; j < 5; j++)
 			{
 				if (format[i] == *(data[j].specifier))
 					break;
 			}
-			if (j <= 6)
+			if (j < 5)
 			{
 				nfc = nfc + data[j].print_function(arg);
 				i++;
